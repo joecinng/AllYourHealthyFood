@@ -5,7 +5,7 @@
     </header>
 
     <form action="/users" method="POST">
-        @csrf
+        @csrf 
         <div class="form-group">
             <label for="name">Full name:</label>
             <input type="text" name="name" value="{{old('name')}}" class="form-control" placeholder="Enter name">

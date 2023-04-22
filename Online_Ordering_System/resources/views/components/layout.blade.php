@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Ordering Website</title>
-
+    
     <!-- CSS link -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -17,8 +17,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="brand" href="/">Online Ordering Website</a>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="brand" href="/">All Your Healthy Foods</a>
             <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
                 <ul class="navbar-nav">
                     @auth
@@ -27,18 +27,15 @@
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-center">
                                 <li><a href="#" class="nav-link navbar-item-link text-center">View Profile</a></li>
-                                <li>
-                                    <form method="POST" action="/logout">
-                                        @csrf
-                                        <button class="nav-link navbar-item-link text-center" type="submit">
-                                            <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
-                                        </button>
-                                    </form>
-                                </li>
                             </ul>
                           </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link navbar-item-link" href="/login"><i class="fa fa-sign-in mx-2"></i>Sign Up</a>
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <button class="nav-link navbar-item-link text-center" type="submit">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
+                                </button>
+                            </form>                        
                         </li>
                     @else
                         <li class="nav-item mx-2">
@@ -58,7 +55,7 @@
     </main>
 
     <footer class="bg-light p-3 mt-5">
-        <p class="text-center">Copyright © 2023 Online Ordering Website.
+        <p class="text-center">Copyright © 2023 All Your Healthy Foods.
         All Rights Reserved.</p>
     </footer>
 

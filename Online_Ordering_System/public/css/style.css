@@ -10,7 +10,7 @@
 
 /* Nav Bar ----------------------------------------- */
 .brand {
-    font-size:30px;
+    font-size:35px;
     color: black;
     font-weight: 500;
     text-decoration: none;
@@ -48,6 +48,14 @@
 }
 /* end of Nav Bar ----------------------------------------- */
 
+/* Search Bar ----------------------------------------- */
+.search-btn {
+    font-size:18px;
+    border:1px solid lightgray;
+    border-radius: 4px;
+}
+/* end of Search Bar ----------------------------------------- */
+
 /* Pop-up Message ----------------------------------------- */
 .popup-message {
     position: fixed;
@@ -72,3 +80,9 @@ and the to block sets the final opacity to 0 */
   }
 }
 /* End of Pop-up Message ----------------------------------------- */
+
+/* Index Page  ----------------------------------------- */
+.price {
+    font-size: 20px;
+}
+/* End of Index Page ----------------------------------------- */

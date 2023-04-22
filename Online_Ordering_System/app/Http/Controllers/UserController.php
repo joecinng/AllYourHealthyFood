@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-
 class UserController extends Controller
 {
     public function create()
@@ -31,6 +30,40 @@ class UserController extends Controller
         // Log in
         auth()->login($user);
 
+        // add a message to the session data (display via popup-messsage)
         return redirect('/')->with('message', 'User created and logged in');
+    }
+
+    public function logout (Request $request) 
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logged out!');
+    }
+
+    public function login ()
+    {
+        return view('users.login');
+    }
+
+    // Authenticate user
+    public function auth (Request $request)
+    {
+        $formfield = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        if (auth()->attempt($formfield)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('message', 'You are now logged in!');
+        }
+        
+    
+        return redirect('/login')->withErrors(['password' => 'Invalid credentials'])->onlyInput('password');
+
     }
 }
