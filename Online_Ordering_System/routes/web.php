@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -30,6 +31,8 @@ use App\Models\Product;
 
 
 // ========================= Product Listings =========================
+Route::get('/home', [HomeController::class, 'index']);
+
 // Show all the products
 Route::get('/', [ProductController::class, 'index']);
 

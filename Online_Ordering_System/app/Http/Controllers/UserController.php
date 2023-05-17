@@ -31,7 +31,7 @@ class UserController extends Controller
         auth()->login($user);
 
         // add a message to the session data (display via popup-messsage)
-        return redirect('/')->with('message', 'User created and logged in');
+        return redirect('/home')->with('message', 'User created and logged in');
     }
 
     public function logout (Request $request) 
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         if (auth()->attempt($formfield)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in!');
+            return redirect('/home')->with('message', 'You are now logged in!');
         }
         
     
