@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,8 @@ class ProductController extends Controller
         return view('products.index', [
             'headings' => 'Featured Products',
             // latest()->get(): return the latest sorted products
-            'products' => Product::latest()->filter(request(['search']))->get()
+            'products' => Product::latest()->filter(request(['search']))->get(),
+            'cart' => Cart::content()
         ]);  
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->float('price');
-            $table->string('weight');
+            $table->float('weight');
             $table->string('image');
             $table->integer('stock');
             $table->longText('ingredients');

@@ -21,6 +21,9 @@
             <a class="brand" href="/">All Your Healthy Foods</a>
             <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link navbar-item-link" href="/cart"><i class="fa fa-shopping-cart mx-2" aria-hidden="true"></i>Cart ({{Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</a>
+                    </li>
                     @auth
                         <li class="dropdown my-2">
                             <a class="dropdown-toggle navbar-item-link" data-toggle="dropdown" href="#">Welcome {{auth()->user()->name}}
@@ -28,8 +31,8 @@
                             <ul class="dropdown-menu dropdown-menu-center">
                                 <li><a href="#" class="nav-link navbar-item-link text-center">View Profile</a></li>
                             </ul>
-                          </li>
-                        <li class="nav-item mx-2">
+                        </li>
+                        <li class="nav-item mx-1">
                             <form method="POST" action="/logout">
                                 @csrf
                                 <button class="nav-link navbar-item-link text-center" type="submit">
@@ -42,7 +45,7 @@
                             <a class="nav-link navbar-item-link" href="/register"><i class="fa fa-user-plus mx-2"></i>Register</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link navbar-item-link" href="/login"><i class="fa fa-sign-in mx-2"></i>Sign In</a>
+                            <a class="nav-link navbar-item-link" href="/login"><i class="fa fa-sign-in mx-1"></i>Sign In</a>
                         </li>
                     @endauth
                 </ul>

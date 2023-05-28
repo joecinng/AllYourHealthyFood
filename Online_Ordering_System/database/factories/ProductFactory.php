@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => fake()->sentence(),
             'description' => fake()->paragraph(5),
             'price' => 10.00,
-            'weight' => '1kg',
+            'weight' => 5,
             'image' => 'image.png',
             'stock' => 100,
             'ingredients' => 'tomato, brocoli'

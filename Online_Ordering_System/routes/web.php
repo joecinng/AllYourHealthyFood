@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Models\Product;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +35,16 @@ use App\Models\Product;
 Route::get('/home', [HomeController::class, 'index']);
 
 // Show all the products
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])
+    ->name('product.index');
+
+Route::post('/', [CartController::class, 'store'])
+    ->name('cart.store');
 
 // Show a product's details
 Route::get('/product/{id}', [ProductController::class, 'search']);
+
+Route::get('/cart', [CartController::class, 'index']);
 
 // ========================= User Authentication =========================
 // Show Register/Create form (Register page)
