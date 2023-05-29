@@ -30,9 +30,10 @@ class CartController extends Controller
         return redirect()->route('product.index')->with('message', 'Successfully saved your cart!');
     }
 
-    public function destroy (Request $request)
-    {
-        $product = Product::findOrFail($request->input(key:'product_id'));
-        return redirect()->route('components.cart')->with('message', 'Successfully added!');
+    public function destroy(Request $request)
+    {   
+        Cart::remove($request->input('product_id'));
+        return redirect()->route('cart.index')->with('message', 'Successfully removed!');
     }
+
 }

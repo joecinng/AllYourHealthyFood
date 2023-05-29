@@ -61,8 +61,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/home')->with('message', 'You are now logged in!');
         }
-        
-    
+         
         return redirect('/login')->withErrors(['password' => 'Invalid credentials'])->onlyInput('password');
 
     }

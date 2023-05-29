@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <img src="{{asset('images/brand.png')}}" alt="Product Image">
                             <a href="/product/{{$product['id']}}"><h4 class="my-3" class="card-title">{{$product['name']}}</h4></a>
-                            <p class="card-text price">${{$product['price']}} / {{$product['weight']}}</p>
+                            <p class="card-text price">${{$product['price']}} / {{$product['weight']}} KG</p>
                             @if ($cart->where('id', $product['id'])->count())
                                 <p>In cart</p>
                             @else

@@ -3,6 +3,7 @@
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -44,7 +45,14 @@ Route::post('/', [CartController::class, 'store'])
 // Show a product's details
 Route::get('/product/{id}', [ProductController::class, 'search']);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', [CartController::class, 'index'])
+    ->name('cart.index');
+
+Route::post('/cart', [CartController::class, 'destroy'])
+    ->name('cart.destroy');
+    
+Route::post('/checkout', [CheckoutController::class, 'index'])
+    ->name('checkout');
 
 // ========================= User Authentication =========================
 // Show Register/Create form (Register page)
