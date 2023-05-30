@@ -23,13 +23,6 @@ class CartController extends Controller
         ]);
     }
 
-    public function update (Request $request)
-    {
-        $product = Product::findOrFail($request->input(key:'product_id'));
-        Cart::update($product->id, ['quantity' => $request->input(key:'qty')]);
-        return redirect()->route('product.index')->with('message', 'Successfully saved your cart!');
-    }
-
     public function destroy(Request $request)
     {   
         Cart::remove($request->input('product_id'));

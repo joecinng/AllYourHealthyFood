@@ -54,6 +54,9 @@ Route::post('/cart', [CartController::class, 'destroy'])
 Route::post('/checkout', [CheckoutController::class, 'index'])
     ->name('checkout');
 
+Route::get('/success/{param}', [CheckoutController::class, 'success'])
+    ->name('checkout.success');
+
 // ========================= User Authentication =========================
 // Show Register/Create form (Register page)
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');

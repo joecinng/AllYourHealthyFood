@@ -25,7 +25,7 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product['id']}}">
                                     <div class="row justify-content-start">
-                                        <input type="number" value="1" name="quantity" class="col-3 mx-3">
+                                        <input type="number" value="1" name="quantity" class="col-3 mx-3" min="1" max="50">
                                         <button type="submit" class="btn btn-primary rounded" class="col-9">Add to Cart</button>
                                     </div>
                                 </form>

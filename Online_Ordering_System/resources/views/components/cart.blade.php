@@ -26,7 +26,7 @@
                         @foreach($cart as $index => $item)
                             <tr>
                                 <th scope="row" class="col-6" scope="col">{{$item->name}}</th>
-                                <td class="col-1 text-center"><input type="number" name="qty{{$index}}" id="qty{{$index}}" value="{{$item->qty}}" oninput="calculateSubTotal('{{$index}}')" min="1" max="50"></td>
+                                <td class="col-1 text-center"><span name="qty{{$index}}" id="qty{{$index}}">{{$item->qty}}</span></td>
                                 <td class="col-1 text-center">A${{$item->price}}</td>
                                 <td class="col-1 text-center">A$<span id="total{{$index}}">{{$item->price * $item->qty}}</span></td>
                                 @php 
@@ -58,20 +58,4 @@
             <button type="submit" class="btn btn-primary rounded">Checkout</button>
         </form>
     </div>
-
-    <script>
-        function calculateSubTotal(index) {
-            var qty = document.getElementById("qty" + index).value;
-            var price = {{$cart[$index]->price}};
-            var total = qty * price;
-
-            var sub = total - parseFloat(document.getElementById("total" + index).textContent);
-            document.getElementById("total" + index).textContent = total;
-
-            var sumElement = document.getElementById("sum");
-            var sumText = sumElement.textContent;
-            var sum = parseFloat(sumText) + sub;
-            document.getElementById("sum").textContent = sum;
-        }
-      </script>
 </x-layout>
