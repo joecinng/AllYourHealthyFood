@@ -52,10 +52,12 @@
             @endif
         </div>
     </div>
-    <div class="row justify-content-end m-3">
-        <form action="{{ route('checkout') }}" class="col-1 mx-3" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-primary rounded">Checkout</button>
-        </form>
-    </div>
+    @if ($cart->count() > 0)
+        <div class="row justify-content-end m-3">
+            <form action="{{ route('checkout') }}" class="col-1 mx-3" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary rounded">Checkout</button>
+            </form>
+        </div>
+    @endif
 </x-layout>

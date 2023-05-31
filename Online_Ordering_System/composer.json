@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "bumbummen99/shoppingcart": "^4.2",
+        "easypost/easypost-php": "^6.6",
         "guzzlehttp/guzzle": "^7.2",
         "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^9.19",

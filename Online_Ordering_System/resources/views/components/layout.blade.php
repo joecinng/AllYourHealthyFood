@@ -29,16 +29,15 @@
                             <a class="dropdown-toggle navbar-item-link" data-toggle="dropdown" href="#">Welcome {{auth()->user()->name}}
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-center">
-                                <li><a href="#" class="nav-link navbar-item-link text-center">View Profile</a></li>
+                                <li class="nav-item mx-1">
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <button class="nav-link navbar-item-link text-center" type="submit">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
+                                        </button>
+                                    </form>                        
+                                </li>
                             </ul>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <form method="POST" action="/logout">
-                                @csrf
-                                <button class="nav-link navbar-item-link text-center" type="submit">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
-                                </button>
-                            </form>                        
                         </li>
                     @else
                         <li class="nav-item mx-2">

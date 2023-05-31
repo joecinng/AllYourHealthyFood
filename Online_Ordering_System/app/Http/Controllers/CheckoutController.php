@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderDetails;
+use EasyPost\EasyPostClient;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -93,7 +95,6 @@ class CheckoutController extends Controller
 
     public function success(Request $request, $param)
     {
-
         $total = $param;
 
         $order = new Order();
@@ -106,12 +107,19 @@ class CheckoutController extends Controller
         foreach($cart as $product)
         {
             $orderdetails = new OrderDetails();
-            $orderdetails->user_id = auth()->user()->id;
+            $orderdetails->order_id = $order->id;
             $orderdetails->product_id = $product->id;
             $orderdetails->qty = $product->qty;
             $orderdetails->subtotal = ($product->price * $product->qty);
             $orderdetails->save();
+
+            // update product stock
+            $product_found = Product::findOrFail($product->id);
+            $product_found->stock = $product_found->stock - $product->qty;
+            $product_found->save();
         }
+
+        $client = new EasyPostClient(env('EASYPOST_API_KEY'));
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET_KEY'));
 
@@ -122,7 +130,16 @@ class CheckoutController extends Controller
         if (!$session) {
             throw new NotFoundHttpException;
         }
+
+        $shipping_det = $session->shipping_details;
+
+        date_default_timezone_set('Australia/Melbourne');
+
+        $tracker = $client->tracker->create([
+            'tracking_code' => 'EZ1000000001',
+            'carrier' => 'AustraliaPost'
+        ]);
         
-        return view('products.checkout-success');
+        return view('products.checkout-success', ["url"=>$tracker->public_url]);
     }
 }

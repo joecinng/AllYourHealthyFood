@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->longText('ingredients');
             $table->timestamps();
-        });;
+        });
     }
 
     /**
