@@ -31,28 +31,37 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// ========================= Product Listings =========================
+// ========================= Admin Page =========================
+// Show the admin page
 Route::get('/home', [HomeController::class, 'index']);
 
+// ========================= Product Listings =========================
 // Show all the products
 Route::get('/', [ProductController::class, 'index'])
     ->name('product.index');
 
-Route::post('/', [CartController::class, 'store'])
-    ->name('cart.store');
-
 // Show a product's details
 Route::get('/product/{id}', [ProductController::class, 'search']);
 
+// ========================= Shopping Cart =========================
+// Store cart
+Route::post('/', [CartController::class, 'store'])
+    ->name('cart.store');
+
+// Show a cart
 Route::get('/cart', [CartController::class, 'index'])
     ->name('cart.index');
 
+// Remove a product from the cart
 Route::post('/cart', [CartController::class, 'destroy'])
     ->name('cart.destroy');
-    
+
+// ========================= Checkout =========================
+// Checkout page
 Route::post('/checkout', [CheckoutController::class, 'index'])
     ->name('checkout');
 
+// Checkout success page
 Route::get('/success/{param}', [CheckoutController::class, 'success'])
     ->name('checkout.success');
 
