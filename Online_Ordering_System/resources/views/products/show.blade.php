@@ -2,7 +2,7 @@
     <p><a href="/">&lt;back</a></p>
     <div class="card">
         <div class="card-body">
-            <img src="{{asset('images/brand.png')}}" alt="Product Image">
+            <img src="{{ asset('/images/' . $product['image']) }}" alt="Product Image" style="width: 200px; height: 200px; display: block; margin-left: auto; margin-right: auto;">
             <h4 class="card-title my-3">{{$product['name']}}</h4>
             <p class="card-text price my-4">${{$product['price']}} / {{$product['weight']}}</p>
             <h5>Product Details</h5>

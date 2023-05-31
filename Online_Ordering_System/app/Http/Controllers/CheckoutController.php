@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderDetails;
@@ -37,8 +38,16 @@ class CheckoutController extends Controller
             }
 
             $session = $stripe->checkout->sessions->create([
-                'shipping_address_collection' => ['allowed_countries' => ['AU']],
-                'shipping_options' => [
+                'shipping_address_collection' => [
+                    'allowed_countries' => ['AU']
+                ],
+                "phone_number_collection" => [ 
+                    "enabled" => true 
+                ],
+                "invoice_creation" => [
+                    "enabled" => true
+                ],
+                'shipping_options'  => [
                     [
                         'shipping_rate_data' => [
                             'type' => 'fixed_amount',
@@ -127,11 +136,15 @@ class CheckoutController extends Controller
 
         $session = $stripe->checkout->sessions->retrieve($sessionId);
 
+        $user_found = User::findOrFail(auth()->user()->id);
+        $userdetails = $session->customer_details;
+        $user_found->phone_number = $userdetails['phone'];
+        $user_found->address = $userdetails['address']->line1 . ', ' . $userdetails['address']->city . ' ' . $userdetails['address']->state . ', ' . $userdetails['address']->postal_code . ', ' . $userdetails['address']->country;
+        $user_found->save();
+
         if (!$session) {
             throw new NotFoundHttpException;
         }
-
-        $shipping_det = $session->shipping_details;
 
         date_default_timezone_set('Australia/Melbourne');
 
@@ -139,7 +152,7 @@ class CheckoutController extends Controller
             'tracking_code' => 'EZ1000000001',
             'carrier' => 'AustraliaPost'
         ]);
-        
-        return view('products.checkout-success', ["url"=>$tracker->public_url]);
+         
+        return view('products.checkout-success', ["tracker"=>$tracker, "shipping"=>$session])->with('message', 'Payment succeeds!');
     }
 }

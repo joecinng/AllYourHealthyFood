@@ -31,7 +31,6 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
 // ========================= Product Listings =========================
 Route::get('/home', [HomeController::class, 'index']);
 

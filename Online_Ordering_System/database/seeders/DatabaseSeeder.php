@@ -66,13 +66,5 @@ class DatabaseSeeder extends Seeder
             'stock' => 25,
             'ingredients' => 'Organic whole wheat flour, water, yeast, salt',
         ]);
-            
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
