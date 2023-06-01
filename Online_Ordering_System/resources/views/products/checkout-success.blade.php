@@ -30,7 +30,7 @@
                                 <strong>{{auth()->user()->name}}</strong><br>
                                 {{$shipping->shipping_details->address->line1}}<br>
                                 {{$shipping->shipping_details->address->city}}, {{$shipping->shipping_details->address->state}} {{$shipping->shipping_details->address->postal_code}}<br>
-                                Phone: {{auth()->user()->phone_number}}<br>
+                                Phone: {{$shipping->customer_details->phone}}<br>
                                 Email: {{auth()->user()->email}}
                             </address>
                         </div>

@@ -5,6 +5,10 @@
     <!-- Search bar -->
     @include('partials._search')
 
+    @php 
+       Session::forget('order_created'); 
+    @endphp
+
     <h2>{{$headings}}</h2>
 
     @if (count($products) == 0) 
