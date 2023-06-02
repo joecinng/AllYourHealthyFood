@@ -1,0 +1,90 @@
+/* ================================================ */
+/* IMPORTANT! Please follow the same comment format */
+/* ================================================ */
+
+
+/* General use ----------------------------------------- */
+input[type='number']{
+    width: 50%;
+} 
+
+/* End of General use ----------------------------------------- */
+
+/* Nav Bar ----------------------------------------- */
+.brand {
+    font-size:35px;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.brand:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-item-link {
+    font-size: 19px;
+    color: black;
+    text-decoration: none;
+    border:none;
+    background-color: white;
+}
+
+.navbar-item-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu-center {
+    right: auto;
+    left: auto;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-10%, 0);
+}
+
+.navbar-button {
+    border: none;
+    background-color: white;
+}
+/* end of Nav Bar ----------------------------------------- */
+
+/* Search Bar ----------------------------------------- */
+.search-btn {
+    font-size:18px;
+    border:1px solid lightgray;
+    border-radius: 4px;
+}
+/* end of Search Bar ----------------------------------------- */
+
+/* Pop-up Message ----------------------------------------- */
+.popup-message {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4BB543;
+    color: white;
+    padding: 12px 48px;
+    animation: fade-out 1s ease-in-out 2s forwards;
+}
+
+/* Define an animation called fade-out
+The from block sets the initial opacity to 1 
+and the to block sets the final opacity to 0 */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* End of Pop-up Message ----------------------------------------- */
+
+/* Index Page  ----------------------------------------- */
+.price {
+    font-size: 20px;
+}
+/* End of Index Page ----------------------------------------- */
