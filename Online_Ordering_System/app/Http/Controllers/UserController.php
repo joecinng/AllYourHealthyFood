@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function create()
+    public function index()
     {
         return view('users.register');
     }
@@ -34,7 +34,7 @@ class UserController extends Controller
         return redirect('/home')->with('message', 'User created and logged in');
     }
 
-    public function logout (Request $request) 
+    public function logout (Request $request)  
     {
         auth()->logout();
 

@@ -33,7 +33,8 @@ use App\Http\Controllers\ProductController;
 
 // ========================= Admin Page =========================
 // Show the admin page
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home');
 
 // ========================= Product Listings =========================
 // Show all the products
@@ -41,7 +42,8 @@ Route::get('/', [ProductController::class, 'index'])
     ->name('product.index');
 
 // Show a product's details
-Route::get('/product/{id}', [ProductController::class, 'search']);
+Route::get('/product/{id}', [ProductController::class, 'search'])
+    ->name('search.product');
 
 // ========================= Shopping Cart =========================
 // Store cart
@@ -58,7 +60,7 @@ Route::post('/cart', [CartController::class, 'destroy'])
 
 // ========================= Checkout =========================
 // Checkout page
-Route::post('/checkout', [CheckoutController::class, 'index'])
+Route::post('/checkout', [CheckoutController::class, 'index']) 
     ->name('checkout');
 
 // Checkout success page
@@ -67,16 +69,20 @@ Route::get('/success/{param}', [CheckoutController::class, 'success'])
 
 // ========================= User Authentication =========================
 // Show Register/Create form (Register page)
-Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+Route::get('/register', [UserController::class, 'index'])->middleware('guest')
+    ->name('register');
 
 // Create new user
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])
+    ->name('users');
 
 // Log out user
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth'); // authenticate user to perform certain task
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth') // authenticate user to perform certain task
+    ->name('logout'); 
 
 // Show Login form (Login page)
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // Log in user
-Route::post('/users/auth', [UserController::class, 'auth']);
+Route::post('/users/auth', [UserController::class, 'auth'])
+    ->name('users.auth');   

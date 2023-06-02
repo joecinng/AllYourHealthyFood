@@ -11,18 +11,24 @@
     <!-- Font Awesome -->
     <!-- Search icons from https://fontawesome.com/v4/icons/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Tsukimi+Rounded&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="brand" href="/">All Your Healthy Foods</a>
+        <nav class="shadow-sm rounded navbar navbar-expand-lg navbar-light">
+            <a class="brand" href="{{route('product.index')}}">All Your Healthy Foods</a>
             <div class="collapse navbar-collapse justify-content-end px-5" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item mx-2">
-                        <a class="nav-link navbar-item-link" href="/cart"><i class="fa fa-shopping-cart mx-2" aria-hidden="true"></i>Cart ({{Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</a>
+                        <a class="nav-link navbar-item-link" href="{{route('cart.index')}}"><i class="fa fa-shopping-cart mx-2" aria-hidden="true"></i>Cart ({{Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</a>
                     </li>
                     @auth
                         <li class="dropdown my-2">
@@ -30,7 +36,7 @@
                             <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-center">
                                 <li class="nav-item mx-1">
-                                    <form method="POST" action="/logout">
+                                    <form method="POST" action="{{route('logout')}}">
                                         @csrf
                                         <button class="nav-link navbar-item-link text-center" type="submit">
                                             <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out
@@ -41,10 +47,10 @@
                         </li>
                     @else
                         <li class="nav-item mx-2">
-                            <a class="nav-link navbar-item-link" href="/register"><i class="fa fa-user-plus mx-2"></i>Register</a>
+                            <a class="nav-link navbar-item-link" href="{{route('register')}}"><i class="fa fa-user-plus mx-2"></i>Register</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link navbar-item-link" href="/login"><i class="fa fa-sign-in mx-1"></i>Sign In</a>
+                            <a class="nav-link navbar-item-link" href="{{route('login')}}"><i class="fa fa-sign-in mx-1"></i>Sign In</a>
                         </li>
                     @endauth
                 </ul>

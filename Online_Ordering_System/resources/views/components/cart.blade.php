@@ -1,5 +1,5 @@
 <x-layout>
-    <p><a href="/">&lt;back</a></p>
+    <p><a href="{{route('product.index')}}">&lt;back</a></p>
     <div class="card">
         <div class="card-body">
             <div class="row mb-2 mx-2">
